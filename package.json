@@ -1,0 +1,72 @@
+{
+  "name": "normalizr-json-schema",
+  "version": "0.0.1-alpha.0",
+  "description": "Maps json schemas to normalizr schemas",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "mocha",
+    "coverage": "nyc npm run test",
+    "report": "nyc report --reporter=text-lcov > coverage/lcov.info",
+    "build": "tsc"
+  },
+  "files": [
+    "dist/*.js",
+    "dist/*.d.ts"
+  ],
+  "nyc": {
+    "extension": [
+      ".ts",
+      ".tsx"
+    ],
+    "include": [
+      "src/*"
+    ],
+    "exclude": [
+      "**/*.d.ts"
+    ],
+    "reporter": [
+      "html"
+    ],
+    "require": [
+      "ts-node/register"
+    ],
+    "all": true,
+    "sourceMap": true,
+    "instrument": true
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/adrianschneider94/normalizr-json-schema.git"
+  },
+  "keywords": [
+    "json",
+    "schema",
+    "normalizr"
+  ],
+  "author": "Adrian Schneider <post@adrian-schneider.de>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/adrianschneider94/normalizr-json-schema/issues"
+  },
+  "homepage": "https://github.com/adrianschneider94/normalizr-json-schema#readme",
+  "dependencies": {
+    "json-schema-ref-parser": "^7.1.0",
+    "json-schema": "^0.2.3",
+    "ajv": "^6.10.2",
+    "normalizr": "^3.4.0"
+  },
+  "devDependencies": {
+    "@types/chai": "^4.1.7",
+    "@types/mocha": "^5.2.7",
+    "@types/json-schema": "^7.0.3",
+    "chai": "^4.2.0",
+    "mocha": "^6.2.0",
+    "ts-node": "^8.3.0",
+    "typescript": "^3.5.3",
+    "cross-env": "^5.2.0",
+    "mocha-sinon": "^2.1.0",
+    "nyc": "^14.1.1",
+    "coveralls": "^3.0.5",
+    "source-map-support": "^0.5.12"
+  }
+}
