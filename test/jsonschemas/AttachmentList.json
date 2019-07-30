@@ -1,0 +1,21 @@
+{
+  "$id": "AttachmentList.json",
+  "title": "AttachmentList",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "attachments": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/Attachment"
+      }
+    }
+  },
+  "definitions": {
+    "Attachment": {
+      "$ref": "Attachment.json"
+    }
+  }
+}

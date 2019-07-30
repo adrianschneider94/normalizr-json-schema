@@ -1,0 +1,13 @@
+{
+  "$id": "IdentityLinkList.json",
+  "title": "IdentityLinkList",
+  "type": "array",
+  "items": {
+    "$ref": "#/definitions/IdentityLink"
+  },
+  "definitions": {
+    "IdentityLink": {
+      "$ref": "IdentityLink.json"
+    }
+  }
+}

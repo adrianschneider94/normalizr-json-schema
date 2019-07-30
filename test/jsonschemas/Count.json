@@ -1,0 +1,13 @@
+{
+  "type": "object",
+  "title": "Count",
+  "properties": {
+    "count": {
+      "type": "integer"
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "count"
+  ]
+}

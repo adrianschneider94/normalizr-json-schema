@@ -1,0 +1,14 @@
+{
+  "$id": "VariableMap.json",
+  "entity": "VariableMap",
+  "type": "object",
+  "additionalProperties": {
+    "type": "object",
+    "$ref": "#/definitions/Variable"
+  },
+  "definitions": {
+    "Variable": {
+      "$ref": "Variable.json"
+    }
+  }
+}

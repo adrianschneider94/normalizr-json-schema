@@ -1,0 +1,21 @@
+{
+  "type": "array",
+  "title": "CandidateGroupCount",
+  "items": {
+    "type": "object",
+    "properties": {
+      "groupName": {
+        "type": "string"
+      },
+      "taskCount": {
+        "type": "integer"
+      }
+    },
+    "additionalProperties": false,
+    "required": [
+      "groupName",
+      "taskCount"
+    ]
+  },
+  "additionalItems": false
+}

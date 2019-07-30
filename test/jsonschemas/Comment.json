@@ -1,0 +1,29 @@
+{
+  "$id": "Comment.json",
+  "title": "Comment",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "userId": {
+      "type": "string"
+    },
+    "taskId": {
+      "type": "string"
+    },
+    "time": {
+      "type": "string"
+    },
+    "message": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "id",
+    "userId",
+    "taskId",
+    "time",
+    "message"
+  ]
+}

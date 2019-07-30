@@ -1,0 +1,125 @@
+{
+  "$id": "Task.json",
+  "title": "Task",
+  "type": "object",
+  "entity": "Task",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "assignee": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "created": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "due": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "followUp": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "delegationState": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "description": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "executionId": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "owner": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "parentTaskId": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "priority": {
+      "type": "integer"
+    },
+    "processDefinitionId": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "processInstanceId": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "taskDefinitionKey": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "caseExecutionId": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "caseInstanceId": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "caseDefinitionId": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "suspended": {
+      "type": "boolean"
+    },
+    "formKey": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "tenantId": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "test": {
+      "$ref": "IdentityLinkList.json"
+    }
+  }
+}

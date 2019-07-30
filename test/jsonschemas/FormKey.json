@@ -1,0 +1,17 @@
+{
+  "type": "object",
+  "title": "FormKey",
+  "properties": {
+    "key": {
+      "type": "string"
+    },
+    "contextPath": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "key",
+    "contextPath"
+  ]
+}

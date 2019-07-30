@@ -1,0 +1,33 @@
+{
+  "title": "Attachment",
+  "type": "object",
+  "entity": "Attachment",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "taskId": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "type": {
+      "type": "string"
+    },
+    "url": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "id",
+    "name",
+    "taskId",
+    "description",
+    "type",
+    "url"
+  ]
+}

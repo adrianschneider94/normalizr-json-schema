@@ -1,0 +1,40 @@
+{
+  "$id": "Variable.json",
+  "entity": "Variable",
+  "type": "object",
+  "properties": {
+    "value": {
+      "type": [
+        "object",
+        "string",
+        "number",
+        "boolean"
+      ]
+    },
+    "type": {
+      "type": "string"
+    },
+    "valueInfo": {
+      "type": "object",
+      "properties": {
+        "objectTypeName": {
+          "type": "string"
+        },
+        "serializationDataFormat": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "objectTypeName",
+        "serializationDataFormat"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "value",
+    "type",
+    "valueInfo"
+  ]
+}

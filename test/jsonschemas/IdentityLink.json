@@ -1,0 +1,20 @@
+{
+  "type": "object",
+  "entity": "IdentityLink",
+  "properties": {
+    "userId": {
+      "type": "string"
+    },
+    "groupId": {
+      "type": "string"
+    },
+    "type": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "userId",
+    "groupId",
+    "type"
+  ]
+}
