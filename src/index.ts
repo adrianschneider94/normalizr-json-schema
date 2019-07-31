@@ -2,6 +2,13 @@ import {JSONSchema4, JSONSchema6} from "json-schema"
 import {schema as normalizrSchema} from "normalizr"
 import {JSONSchema} from "json-schema-ref-parser"
 
+function isObject(obj: any) {
+    return obj === Object(obj)
+}
+
+function isEmpty(obj: any) {
+    return Object.entries(obj).length === 0 && obj.constructor === Object
+}
 
 export type JSONSchema = JSONSchema4 | JSONSchema6
 
@@ -94,11 +101,17 @@ export function parse(schema: JSONSchema, recStack: Array<any> = []): any {
                 returnedSchema = new normalizrSchema.Array(parse(<JSONSchema>schema.items, [...recStack, schema]))
                 break
             case "object":
-                returnedSchema = objectFilter(objectMap(schema.properties,
-                    ([key, value]: [string, any]) => {
-                        return [key, parse(value, [...recStack, schema])]
-                    }
-                ), ([key, value]: [string, any]) => (value !== undefined))
+                if (schema.properties && (!(isObject(schema.additionalProperties)))) {
+                    returnedSchema = objectFilter(objectMap(schema.properties,
+                        ([key, value]: [string, any]) => {
+                            return [key, parse(value, [...recStack, schema])]
+                        }
+                    ), ([key, value]: [string, any]) => (value !== undefined))
+                } else if (isObject(schema.additionalProperties) && isEmpty(schema.properties)) {
+                    returnedSchema = new normalizrSchema.Values(parse(<JSONSchema>schema.additionalProperties, [...recStack, schema]), 'key')
+                } else {
+                    returnedSchema = undefined
+                }
                 break
             default:
                 returnedSchema = undefined

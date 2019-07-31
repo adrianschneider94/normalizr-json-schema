@@ -1,177 +1,54 @@
-import $RefParser from "json-schema-ref-parser"
-import {parse, store} from "../src"
-import {normalize} from 'normalizr'
+import {normalize, schema} from "normalizr"
+import Entity = schema.Entity
 
 let testData = {
-    "id": "test",
-    "tasks": [
-        {
-            "id": "5747a22c-b16b-11e9-a403-0242ac110002",
-            "name": "Approve Invoice",
-            "assignee": null,
-            "created": "2019-07-28T19:10:19.544+0000",
-            "due": "2019-08-04T19:10:19.550+0000",
-            "followUp": null,
-            "delegationState": null,
-            "description": "Approve the invoice (or not).",
-            "executionId": "572af24d-b16b-11e9-a403-0242ac110002",
-            "owner": null,
-            "parentTaskId": null,
-            "priority": 50,
-            "processDefinitionId": "invoice:1:55eeef8f-b16b-11e9-a403-0242ac110002",
-            "processInstanceId": "572af24d-b16b-11e9-a403-0242ac110002",
-            "taskDefinitionKey": "approveInvoice",
-            "caseExecutionId": null,
-            "caseInstanceId": null,
-            "caseDefinitionId": null,
-            "suspended": false,
-            "formKey": "embedded:app:forms/approve-invoice.html",
-            "tenantId": null
-        },
-        {
-            "id": "58288c96-b16b-11e9-a403-0242ac110002",
-            "name": "Prepare\nBank\nTransfer",
-            "assignee": null,
-            "created": "2019-07-28T19:10:20.646+0000",
-            "due": "2019-08-04T19:10:20.646+0000",
-            "followUp": null,
-            "delegationState": null,
-            "description": "Prepare the bank transfer.",
-            "executionId": "57f0173d-b16b-11e9-a403-0242ac110002",
-            "owner": null,
-            "parentTaskId": null,
-            "priority": 50,
-            "processDefinitionId": "invoice:1:55eeef8f-b16b-11e9-a403-0242ac110002",
-            "processInstanceId": "57f0173d-b16b-11e9-a403-0242ac110002",
-            "taskDefinitionKey": "prepareBankTransfer",
-            "caseExecutionId": null,
-            "caseInstanceId": null,
-            "caseDefinitionId": null,
-            "suspended": false,
-            "formKey": "embedded:app:forms/prepare-bank-transfer.html",
-            "tenantId": null
-        },
-        {
-            "id": "584e8a7d-b16b-11e9-a403-0242ac110002",
-            "name": "Assign Reviewer",
-            "assignee": "demo",
-            "created": "2019-07-28T19:10:21.052+0000",
-            "due": null,
-            "followUp": null,
-            "delegationState": null,
-            "description": null,
-            "executionId": null,
-            "owner": null,
-            "parentTaskId": null,
-            "priority": 50,
-            "processDefinitionId": null,
-            "processInstanceId": null,
-            "taskDefinitionKey": "PlanItem_1",
-            "caseExecutionId": "584dee3a-b16b-11e9-a403-0242ac110002",
-            "caseInstanceId": "5847ac9c-b16b-11e9-a403-0242ac110002",
-            "caseDefinitionId": "ReviewInvoiceCase:2:568403ab-b16b-11e9-a403-0242ac110002",
-            "suspended": false,
-            "formKey": "embedded:app:forms/assign-reviewer.html",
-            "tenantId": null
-        },
-        {
-            "id": "585df3f8-b16b-11e9-a403-0242ac110002",
-            "name": "Approve Invoice",
-            "assignee": null,
-            "created": "2019-07-28T19:10:21.368+0000",
-            "due": "2019-08-04T19:10:21.369+0000",
-            "followUp": null,
-            "delegationState": null,
-            "description": "Approve the invoice (or not).",
-            "executionId": "585c9449-b16b-11e9-a403-0242ac110002",
-            "owner": null,
-            "parentTaskId": null,
-            "priority": 50,
-            "processDefinitionId": "invoice:2:567f21a9-b16b-11e9-a403-0242ac110002",
-            "processInstanceId": "585c9449-b16b-11e9-a403-0242ac110002",
-            "taskDefinitionKey": "approveInvoice",
-            "caseExecutionId": null,
-            "caseInstanceId": null,
-            "caseDefinitionId": null,
-            "suspended": false,
-            "formKey": "embedded:app:forms/approve-invoice.html",
-            "tenantId": null
-        },
-        {
-            "id": "5877e4e1-b16b-11e9-a403-0242ac110002",
-            "name": "Prepare\nBank\nTransfer",
-            "assignee": null,
-            "created": "2019-07-28T19:10:21.421+0000",
-            "due": "2019-08-04T19:10:21.421+0000",
-            "followUp": null,
-            "delegationState": null,
-            "description": "Prepare the bank transfer.",
-            "executionId": "58665879-b16b-11e9-a403-0242ac110002",
-            "owner": null,
-            "parentTaskId": null,
-            "priority": 50,
-            "processDefinitionId": "invoice:2:567f21a9-b16b-11e9-a403-0242ac110002",
-            "processInstanceId": "58665879-b16b-11e9-a403-0242ac110002",
-            "taskDefinitionKey": "prepareBankTransfer",
-            "caseExecutionId": null,
-            "caseInstanceId": null,
-            "caseDefinitionId": null,
-            "suspended": false,
-            "formKey": "embedded:app:forms/prepare-bank-transfer.html",
-            "tenantId": null
-        },
-        {
-            "id": "58885ef8-b16b-11e9-a403-0242ac110002",
-            "name": "Assign Reviewer",
-            "assignee": "demo",
-            "created": "2019-07-28T19:10:21.553+0000",
-            "due": null,
-            "followUp": null,
-            "delegationState": null,
-            "description": null,
-            "executionId": null,
-            "owner": null,
-            "parentTaskId": null,
-            "priority": 50,
-            "processDefinitionId": null,
-            "processInstanceId": null,
-            "taskDefinitionKey": "PlanItem_1",
-            "caseExecutionId": "588810d5-b16b-11e9-a403-0242ac110002",
-            "caseInstanceId": "5887c2a7-b16b-11e9-a403-0242ac110002",
-            "caseDefinitionId": "ReviewInvoiceCase:2:568403ab-b16b-11e9-a403-0242ac110002",
-            "suspended": false,
-            "formKey": "embedded:app:forms/assign-reviewer.html",
-            "tenantId": null
+    "amount": {
+        "id": 1,
+        "type": "Double",
+        "value": 30,
+        "valueInfo": {}
+    },
+    "approverGroups": {
+        "type": "Object",
+        "value": [
+            "accounting",
+            "sales"
+        ],
+        "valueInfo": {
+            "objectTypeName": "java.util.ArrayList",
+            "serializationDataFormat": "application/x-java-serialized-object"
         }
-    ]
+    },
+    "invoiceNumber": {
+        "type": "String",
+        "value": "GPFE-23232323",
+        "valueInfo": {}
+    },
+    "invoiceDocument": {
+        "type": "File",
+        "value": null,
+        "valueInfo": {
+            "filename": "invoice.pdf",
+            "mimeType": "application/pdf"
+        }
+    },
+    "creditor": {
+        "type": "String",
+        "value": "Great Pizza for Everyone Inc.",
+        "valueInfo": {}
+    },
+    "invoiceCategory": {
+        "type": "String",
+        "value": "Travel Expenses",
+        "valueInfo": {}
+    }
 }
-
-let resp = {
-    "id": "58885ef8-b16b-11e9-a403-0242ac110002",
-    "name": "Assign Reviewer",
-    "assignee": "demo",
-    "created": "2019-07-28T19:10:21.553+0000",
-    "due": null,
-    "followUp": null,
-    "delegationState": null,
-    "description": null,
-    "executionId": null,
-    "owner": null,
-    "parentTaskId": null,
-    "priority": 50,
-    "processDefinitionId": null,
-    "processInstanceId": null,
-    "taskDefinitionKey": "PlanItem_1",
-    "caseExecutionId": "588810d5-b16b-11e9-a403-0242ac110002",
-    "caseInstanceId": "5887c2a7-b16b-11e9-a403-0242ac110002",
-    "caseDefinitionId": "ReviewInvoiceCase:2:568403ab-b16b-11e9-a403-0242ac110002",
-    "suspended": false,
-    "formKey": "embedded:app:forms/assign-reviewer.html",
-    "tenantId": null
-}
-$RefParser.dereference("test/jsonschemas/TaskList.json").then((schema) => {
-    console.log(parse(schema))
-    console.log(store)
-    console.log(JSON.stringify(normalize(testData, parse(schema)), null, 4))
+let variable = new Entity('variable', {}, {idAttribute: (value, parent, key) => key})
+let testSchema = new schema.Values(variable)
+console.log(normalize(testData, testSchema))
+/**
+ $RefParser.dereference("test/jsonschemas/VariableMap.json").then((schema) => {
+    console.log(normalize(testData, parse(schema)))
 
 })
+ */
